@@ -1,0 +1,20 @@
+<div class="col-md-4 offset-4 mt-4 mb-4"></div>
+<form action="" [formGroup]="form" (ngSubmit)="AddMovie(form)" class="col-md-4 offset-4 mt-5 card card-body">
+    <h1 class="text-center text-white bg-warning">ADD MOVIE</h1>
+    <div class="form-group" [formGroup]="form">
+        <input type="text" name="addmovie" id="addmovie" class="form-control" placeholder="enter movie name.." formControlName="addmovie">
+    </div>
+    <div class="form-group">
+        <input type="text" name="title" id="title" class="form-control" placeholder="enter movie title...." formControlName="title">
+    </div>
+    <div class="form-group">
+        <input type="url" name="imgurl" id="imgurl" class="form-control" placeholder="enter image url...." formControlName="imgurl">   
+    </div>
+    <div class="form-group">
+        <textarea name="desc" id="desc" cols="30" rows="10" class="form-control" placeholder="enter movie description..." #desc="ngModel" ngModel></textarea>
+    </div> 
+    <div class="form-group">
+    <button type="submit" class="btn btn-outline-success float-right"[disabled]="form.invalid" >ADD</button>
+    </div>
+</form>
+

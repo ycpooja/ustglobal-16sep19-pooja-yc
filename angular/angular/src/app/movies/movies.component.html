@@ -1,0 +1,9 @@
+<input id="b1" type="text" class="text text-center offset-6 mt-2 ml-2 card card-body" (onKeyUp)="sendMovie(movie)" placeholder="search by movie name">
+<div class="row">
+<div class="container col-md-4 mt-2 float-left card card-body">
+    <div class="card card-body" *ngFor="let movie of movies">
+        <img src="{{movie.imgUrl}}" alt=""  >
+        <h1>{{movie.name}}</h1>
+    </div>
+</div>
+</div> 
