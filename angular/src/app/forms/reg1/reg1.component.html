@@ -1,0 +1,34 @@
+<form action="" class="col-md-4 offset-4 mt-5 card card-body" #form="ngForm"(ngSubmit)="reg1Data(form)">
+    <h1 class="text-center bg-danger text-white">Product Details</h1>
+    <div class="form-group">
+        <input type="text" name="productname" id="productname" class="form-control" placeholder="enter product name..." #productname="ngModel" ngModel required minlength="6">
+    <div *ngIf="productname.touched && productname.invalid">
+        <p class="alert alert-danger"*ngIf="productname.errors.required">this field is required</p>
+        <p *ngIf="productname.errors.minlength">it is less than 6 characters</p>
+    </div>
+    </div>
+    <div class="form-group">
+        <input type="number" name="product price" id="productprice" class="form-control" placeholder="enter product price..." #productprice="ngModel" ngModel required minlength="6">
+    <div *ngIf="productprice.touched && productprice.invalid">
+        <p class="alert alert-danger"*ngIf="productprice.errors.required">this field is required</p>
+        <p *ngIf="productprice.errors.minlength">it is less than 6 characters</p>
+    </div>
+    </div>
+    <div class="form-group">
+           <input  type="text" name="productdescription" id="product description" class="form-control " placeholder="enter product description..." #productdescription="ngModel" ngModel required>
+           <div *ngIf="productdescription.touched && productdescription.invalid">
+                <p class="alert alert-danger" *ngIf="productdescription.errors.required">this field is required</p>
+                <p  *ngIf="productdescription.errors.minlength">it is less than 6 characters</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="productenquiry" id="productenquiry" class="form-control " placeholder="enter product enquiry..." #productenquiry="ngModel" ngModel required>
+            <div *ngIf="productenquiry.touched && productenquiry.invalid">
+                 <p class="alert alert-danger" *ngIf="productenquiry.errors.required">this field is required</p>
+                 <p  *ngIf="productenquiry.errors.minlength">it is less than 6 characters</p>
+             </div>
+         </div>
+        <div class="form-group">
+<button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Add product</button>
+</div>
+</form>

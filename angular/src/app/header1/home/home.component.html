@@ -1,0 +1,18 @@
+
+<div class="col-md-3" *ngFor="let new of news">
+    <h1>Entertainment News</h1>
+    <img id="brown" src="{{new.urlToImage}}" alt="">
+    <h1>{{new.title}}</h1>
+</div>
+<div class="col-md-8" *ngFor="let new of news">
+    <h1>Top News From India</h1>
+    <img src="{{new.urlToImage}}" alt="">
+    <h1>{{new.title}}</h1>
+</div>
+
+<div class="col-md-6" *ngFor="let new of news">
+    <h1>Sports News</h1>
+    <img src="{{new.urlToImage}}" alt="">
+    <h1>{{new.title}}</h1>
+</div>
+

@@ -1,0 +1,17 @@
+
+<div class="container col-md-3 offset-2 card card-body float-left" *ngFor="let new of news">
+    <h1>Entertainment News</h1>
+    <img src="{{new.urlToImage}}" alt="">
+    <h1>{{new.title}}</h1>
+</div>
+<div class="container col-md-6 offset-2 card card-body" *ngFor="let new of news">
+    <h1>Top News From India</h1>
+    <img src="{{new.urlToImage}}" alt="">
+    <h1>{{new.title}}</h1>
+</div>
+
+<div class="container col-md-3 offset-2 card card-body float-right" *ngFor="let new of news">
+    <h1>Sports News</h1>
+    <img src="{{new.urlToImage}}" alt="">
+    <h1>{{new.title}}</h1>
+</div>

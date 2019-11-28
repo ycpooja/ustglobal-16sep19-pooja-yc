@@ -1,0 +1,47 @@
+<form action="" class="col-md-4 offset-4 mt-5 card card-body" #form="ngForm"(ngSubmit)="loginData(form)">
+    <h1 class="text-center bg-danger text-white">Company Details</h1>
+    <div class="form-group">
+        <input type="Companyname" name="Companyname" id="Companyname" class="form-control" placeholder="enter company name..." #companyname="ngModel" ngModel required minlength="6">
+    <div *ngIf="companyname.touched && company-name.invalid">
+        <p class="alert alert-danger"*ngIf="companyname.errors.required">this field is required</p>
+        <p *ngIf="companyname.errors.minlength">it is less than 6 characters</p>
+    </div>
+    </div>
+    <div class="form-group">
+        <select name="skills" id="skills" class="form-control" placeholder="skills" #companyname="ngModel" ngModel required minlength="6">
+    <option name="java" id="skills">skills</option>
+    <option name="sql" id="skills">sql</option>
+    <option name="sql" id="skills">java</option>
+        </select>
+        <div *ngIf="skills.touched && skills.invalid">
+        <p class="alert alert-danger"*ngIf="companyname.errors.required">this field is required</p>
+        <p *ngIf="skills.errors.minlength">it is less than 6 characters</p>
+    </div>
+    </div>
+    <div class="form-group">
+        <input type="yearsofexperience" name="yearsofexperience" id="yearsofexperience" class="form-control" placeholder="enter years of experience..." #productprice="ngModel" ngModel required minlength="6">
+    <div *ngIf="yearsofexperience.touched && yearsofexperience.invalid">
+        <p class="alert alert-danger"*ngIf="yearsofexperience.errors.required">this field is required</p>
+        <p *ngIf="yearsofexperience.errors.minlength">it is less than 6 characters</p>
+    </div>
+    </div>
+    <div class="form-group">
+        <input type="yearsofexperience" name="yearsofexperience" id="yearsofexperience" class="form-control" placeholder="CTC" #productprice="ngModel" ngModel required minlength="6">
+    <div *ngIf="yearsofexperience.touched && yearsofexperience.invalid">
+        <p class="alert alert-danger"*ngIf="yearsofexperience.errors.required">this field is required</p>
+        <p *ngIf="yearsofexperience.errors.minlength">it is less than 6 characters</p>
+    </div>
+    </div>
+    <div class="form-group">
+        <input type="yearsofexperience" name="yearsofexperience" id="yearsofexperience" class="form-control" placeholder="location" #productprice="ngModel" ngModel required minlength="6">
+    <div *ngIf="yearsofexperience.touched && yearsofexperience.invalid">
+        <p class="alert alert-danger"*ngIf="yearsofexperience.errors.required">this field is required</p>
+        <p *ngIf="yearsofexperience.errors.minlength">it is less than 6 characters</p>
+    </div>
+    </div>
+   
+        <div class="form-group">
+<button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Add requirement</button>
+</div>
+</form>
+
