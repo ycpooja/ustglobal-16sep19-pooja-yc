@@ -1,0 +1,994 @@
+show databases;
+show dummydb;
+use dummydb;
+show tables;
+desc product;
+drop database dummydb;	//drops the entire database
+create database ust_db;
+use ust_db;
+create table product(pid int, pname varchar(120), pquantity int);
+desc product;
+drop table product;
+show tables;
+alter table product add column price int;	//add extra column
+alter table product change column price cost int;	//replaces the old name by new name s
+alter table product drop column cost;	//deletes the column
+
+rename table product to product_info;
+insert into product_info values(102,'pen',20);
+
+select * from table_name;	//selection
+update product_info set quantity = 100;
+delete from product_info;
+select pname from product_info;//projection
+truncate table product_info;
+select distinct designation from employee;/select distinct designation,deptno from employee;	//Distinct
+select salary as sal from employee;/select salary  sal from employee;	//Alias name
+update employee set mobileno=22877 where eid=102;	//where clause
+select * from employee where eid=105;	//where clause
+delete from employee where eid=101;	//where clause
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+								
+							:OPERATORS:
+
+
+select salary+5000 increment from employee;	//Arithmetic Operator(+)
+select salary-5000 decrement from employee;	//Arithmetic Operator(-)
+select salary*12 anual from employee; 		//Arithmetic Operator(*)
+select salary/30 day from employee;		//Arithmetic Operator(/)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+							:RELATIONAL OPERATOR:
+
+write a query to display all the records whose emp designation is software developer.
+-> 	select * from employee where designation='software developer';
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+==================================================================================================================================================
+
+write a query to display all the records of the emp excluding who is working in deptno 20.
+-> 	select * from employee where deptno != 20;
+-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+======================================================================================================================================================
+
+write a query to display the record of employee whose salary is greater than 3000.
+->	 select * from employee where salary>3000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+==================================================================================================================================================
+
+write a query to display the record of employee whose age is less than 30;
+->	 select * from employee where age<30;
+-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+=======================================================================================================================================================
+
+write a query to display name,sal,email,mobileno whose age is equal to 18 or greater than 18.
+->	select ename,mobileno,email,salary from employee where age>=18;
++---------+-----------+-------------------+--------+
+| ename   | mobileno  | email             | salary |
++---------+-----------+-------------------+--------+
+| banu    |     22877 | mary@gmail.com    |   2000 |
+| haseeb  | 991633754 | haseeb@gmail.com  |  50000 |
+| halima  | 953590083 | halima@gmail.com  |  30000 |
+| ramesh  | 956324823 | ramesh@gmail.com  |  25000 |
+| pooja   | 701905168 | pooja@gmail.com   |  35000 |
+| puneeth | 701682538 | puneeth@gmail.com |  35000 |
+| nadeem  | 935325628 | nadeem@gmail.com  |  55000 |
+| sathya  | 935868923 | sathya@gmail.com  |  25000 |
+| bhargav | 785142639 | bhargav@gmail.com |  45000 |
++---------+-----------+-------------------+--------+
+===================================================================================================================================================
+
+wqtd whose sal is less than orequal to 35000.
+->	select * from employee where salary <=35000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+							:LOGICAL OPERATOR:
+
+1.AND:-
+	Syntax: select * from table_name where condition1 and condition2;
+2.OR:-
+	Syntax: select * from table_name where condition1 or condition2;
+3.NOT:-
+	Syntax: select * from table_name where not condition;
+
+wqtd all the employee details who is working in deptno.20 as well as salary is greater than 25000.
+-> 	select * from employee where deptno=20 and salary>25000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+-------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+-------------+
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR          |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+-------------+
+==============================================================================================================================================
+wqtd name,salary from employee table who is working in deptno 10  and 20.
+-> 	select ename,salary from employee where deptno=10 and deptno=20;
+empty set.
+================================================================================================================================================
+wqtd emp detail whose job designation is as tester and age is 25.
+-> 	select * from employee where designation='tester' and age=25;
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| 109 | sathya | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com | male   | tester      |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+================================================================================================================================================
+wqtd all record of employee who is working as tester or having salary more than 40000.
+->	select * from employee where designation='tester' or salary>40000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+================================================================================================================================================
+wqtd name,salary,age from employee table who is working in deptno 10 or 40 or 50.
+-> 	select ename,salary,age from employee where deptno=10 or deptno=40 or deptno=50;
++--------+--------+-----+
+| ename  | salary | age |
++--------+--------+-----+
+| halima |  30000 |  22 |
+| ramesh |  25000 |  24 |
+| nadeem |  55000 |  27 |
+| sathya |  25000 |  25 |
++--------+--------+-----+
+================================================================================================================================================
+wqtd employee details whose age is more than 25 and bloodgroup is B+.
+-> 	select * from employee where age>25 or bloodgroup="B+";
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| 102 | banu   |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com   | female | clerk              |
+| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+================================================================================================================================================
+wqtd all the record of employee excluding tester.
+->	select * from employee where not  designation= 'tester';/
+  	select * from employee where  designation <> 'tester';/
+ 	select * from employee where  designation !='tester';
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+================================================================================================================================================
+wqtd name of all the employee who is working as HR or tester and salary is greater than 40000.
+->	select ename from employee where designation='HR' or 'tester'and salary>40000;
++---------+
+| ename   |
++---------+
+| ramesh  |
+| bhargav |
++---------+
+================================================================================================================================================
+wqtd all the employee excluding software developer who are working in deptno40.
+-> 	select * from employee where not (designation='software developer' and deptno = 40);
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+================================================================================================================================================
+wqtd all the software developer who are working for deptno 10 or 40.
+->	 select * from employee where designation='software developer' and (deptno=10 or deptno=40);
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+							:SPECIAL OPERATORS:
+
+1.In Operator:- Syntax: select * from table_name where column_name IN(value-1,value-2....value-n)
+
+wqtd all the record of employee whose is working in deptno 40,50,60,70.
+->	select * from employee where deptno in (40,50,60,70);
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| 104 | halima | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com | female | tester             |
+| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+===============================================================================================================================================
+wqtd name of all the employee who is working as a tester,HR,clerk.
+->	 select ename from employee where designation in ('HR','tester','clerk');
++---------+
+| ename   |
++---------+
+| banu    |
+| halima  |
+| ramesh  |
+| sathya  |
+| bhargav |
++---------+
+========================================================================================================================================
+wqtd the detail of tester,admin,software developer who are working in deptno 20 or 30 and salary is greater than 40000.
+->	select * from employee where designation in ('tester','software developer','admin') and (deptno=20 or deptno=30) and salary>40000 ;
+Empty set (0.00 sec)
+==========================================================================================================================================
+wqtd the detail of tester,admin,software developer who are working in deptno 20 or 40 and salary is greater than 40000.
+->	select * from employee where designation in ('tester','software developer','admin') and (deptno=20 or deptno=40) and salary>40000 ;
+	+-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+	| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
+	+-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+	| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
+	+-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+==========================================================================================================================================
+2.Not In Operator:- Syntax: select * from table_name where column_name not in (value1,value2,....value-n);
+
+wqtd all the record of employee excluding who is working as 'tester','admin','HR'.
+->	select * from employee where designation not in('tester','HR','admin');
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+=====================================================================================================================================================
+wqtd all the record of employee whose age is 20,25,30,40.Exclude all the detail of tester and software developer.
+->	select * from employee where age in (20,25,30,40) and designation not in('tester','software developer');
++-----+-------+----------+------------+-----+------------+------------+--------+--------+----------------+--------+-------------+
+| eid | ename | mobileno | DOB        | age | DOJ        | bloodgroup | deptno | salary | email          | gender | designation |
++-----+-------+----------+------------+-----+------------+------------+--------+--------+----------------+--------+-------------+
+| 102 | banu  |    22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com | female | clerk       |
++-----+-------+----------+------------+-----+------------+------------+--------+--------+----------------+--------+-------------+
+=======================================================================================================================================================
+3.Between Operator:- Syntax: select * from table_name where column_name between(value1 and value2);
+
+wqtd all the detail of employee whose age is between 20 to 40.
+->	select *  from employee where age between 20 and 40;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+====================================================================================================================================================
+wqtd all the detail of employee who were hired during 2017.
+->	select * from employee where DOJ between '2017-01-01' and '2017-12-31';
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| 105 | ramesh | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com | male   | HR          |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+====================================================================================================================================================
+4.Not Between:- Syntax: select * from table_name where column_name not between value1 and value2.
+
+wqtd all the record of employee excluding whose salary is in the range of 25000 to 35000.
+->	select * from employee where salary not between 25000 and 35000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+=====================================================================================================================================================
+5.Is Operator:- used to check null values.
+	Syntax: select * from table_name where col_name is null;
+
+====================================================================================================================================================
+6.Like Operator:- used for pattern matching.
+character-2 types:
+		  ->ordinary character : 'A'-'Z', 1-9
+		  ->special character : '%' = matches 0 to n value.  
+					'_' = matches single value.
+
+	Syntax: select * from table_name where column_name Like '%' / '_' ;
+
+wqtd all the detail of employee whose name starts with 'A'.
+->	 select * from employee where ename Like 'A%';
+Empty set
+=====================================================================================================================================================
+wqtd name of employee whose second character is 'I'.
+->	 select * from employee where ename Like '_i%';
+Empty set
+================================================================================================================================================
+wqtd the name of employee which has atleast 2 'l' in their name.
+->	select * from employee where ename Like '%l%l%';
+Empty set (0.00 sec)
+====================================================================================================================================================
+wqtd the name of employee whose name start with 'n' and end with 'm'.
+->	 select * from employee where ename Like 'n%m';
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+====================================================================================================================================================
+wqtd all the records of employee if the employee name begins with 'a' or 'h'.
+->	select * from employee where ename like 'a%' or ename like 'h%';
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| 103 | haseeb | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com | male   | manager     |
+| 104 | halima | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com | female | tester      |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+====================================================================================================================================================
+wqtd employee name ,salary who is working in deptno 10,20,30 and job designation starts with 's'.
+->	select ename,salary from employee where deptno in(10,20,30) and designation like 's%';
++---------+--------+
+| ename   | salary |
++---------+--------+
+| puneeth |  35000 |
++---------+--------+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+								
+							:FUNCTIONS: 
+
+
+1.Single-row function/Scalar function		2.Multi-row function/Aggregate function
+
+1.Single-row function: For single input, we get single output.
+
+1.Multi-row function: For 'n' no. of inputs, we get single output.
+			ex:Total no. of students in class.
+
+  Types :  		Syntax : select function_name(column_name) from table_name;
+
+->SUM() : Returns sum of all the values of the selected column.
+ select sum(salary) from employee;	  
++-------------+							
+| sum(salary) |
++-------------+
+|      302000 |							
++-------------+
+
+->MIN() : Returns minimum value of the selected column.
+select min(salary) from employee;	
++-------------+
+| min(salary) |
++-------------+
+|        2000 |
++-------------+
+
+-> MAX() : Returns maximum value of the selected column.
+ select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+|       55000 |
++-------------+
+
+->AVG() : Returns Average Value.
+ select avg(salary) from employee;
++-------------+
+| avg(salary) |
++-------------+
+|  33555.5556 |
++-------------+
+
+->COUNT() :  It counts the number of rows.
+select count(*) from employee;
++----------+
+| count(*) |
++----------+
+|        9 |
++----------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+								:ORDER BY CLAUSE:
+
+-> ORDER BY keyword is used to sort the result in ascending or descending order
+
+		Syntax: Select * from table_name where col_name order by col_name asc/desc;
+
+Note: Order of execution:
+	1.From
+	2.Where
+	3.Select
+	4.OrderBy
+
+
+wqtd all the result of employee and salary should be in descending order.
+->	select * from employee order by salary desc;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+								:SUB-QUERY CLAUSE:
+
+-> A Query inside another Query is called sub-query.
+		
+		Syntax : select * from table_name where col_name operator(select * from table_name);
+				outer query					inner query
+
+-> 1st inner query will get executed & the result of inner query will be given as input to outer query.
+-> The final result will be from outer query.
+
+ 
+1) AND
+
+select * from employee where deptno=20 and salary>25000;
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+
+| eid | name | mobile_no | dob        | blood_group | deptno | salary | email         | gender | designation |
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+
+|  22 | raj  | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com | male   | tester      |
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+
+1 row in set (0.06 sec)
+
+
+mysql> select * from employee where age>25 and blood_group="b+";
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+------+
+| eid | name | mobile_no | dob        | blood_group | deptno | salary | email         | gender | designation | age  |
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+------+
+|  77 | gayu |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com | female | tester      |   37 |
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+------+
+
+2) OR
+
+select name,salary,age from employee where deptno=10 or deptno=40 or deptno=50;
++---------+--------+------+
+| name    | salary | age  |
++---------+--------+------+
+| tanu    | 700000 | NULL |
+| dhanush |  80000 | NULL |
+| anu     |  90000 | NULL |
++---------+--------+------+
+
+mysql> select * from employee where age>25 or  blood_group="b+";
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+| eid | name     | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+
+3) NOT
+
+select * from employee where not designation="tester";
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+| eid | name     | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+7 rows in set (0.06 sec)
+
+select name from employee where designation="hr" or designation="tester" and salary>40000;
++----------+
+| name     |
++----------+
+| gayu     |
+| chandana |
+------------
+
+select * from employee where not designation="developer" and deptno=30;
++-----+----------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+| eid | name     | mobile_no | dob        | blood_group | deptno | salary | email            | gender | designation | age  |
++-----+----------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com | female | supporter   |   22 |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com | female | analyst     |   35 |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com    | female | tester      |   37 |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com | female | hr          |   29 |
++-----+----------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+4 rows in set (0.00 sec)
+
+
+select * from employee where designation="developer" and deptno=10 or deptno=40;
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+| eid | name    | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  |
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+|  88 | dhanush |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 |
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+1 row in set (0.01 sec)
+
+SPECIAL OPERATORS
+
+1) IN
+
+ select * from employee where deptno in(40,50,60,70);
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+| eid | name    | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  |
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+|  44 | tanu    |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 |
+|  88 | dhanush |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 |
+| 111 | anu     |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 |
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+
+select * from employee where designation in('tester','developer','hr') and (deptno=20 or deptno=30) and salary>40000;
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+| eid | name     | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+3 rows in set (0.00 sec)
+
+select * from employee where designation not in('tester','admin','hr');
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+| eid | name    | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  |
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+|  33 | shilpa  | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 |
+|  44 | tanu    |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 |
+|  55 | pallavi | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 |
+|  66 | prajna  |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 |
+|  88 | dhanush |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 |
+| 111 | anu     |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 |
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+6 rows in set (0.02 sec)
+
+select * from employee where age in(20,25,30,40) and designation not in('tester','developer');
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+------+
+| eid | name | mobile_no | dob        | blood_group | deptno | salary | email         | gender | designation | age  |
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+------+
+| 111 | anu  |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com | female | supporter   |   30 |
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+------+
+1 row in set (0.00 sec)
+
+2) BETWEEN
+
+select * from employee where age between 20 and 40;
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+| eid | name     | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+|  22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 |
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+9 rows in set (0.02 sec)
+
+3) LIKE OPERATOR
+
+ select * from employee where name like 'a%';
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+------+
+| eid | name | mobile_no | dob        | blood_group | deptno | salary | email         | gender | designation | age  |
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+------+
+| 111 | anu  |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com | female | supporter   |   30 |
++-----+------+-----------+------------+-------------+--------+--------+---------------+--------+-------------+------+
+1 row in set (0.05 sec)
+
+select * from employee where name like '__i%';
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+| eid | name   | mobile_no | dob        | blood_group | deptno | salary | email            | gender | designation | age  |
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+|  33 | shilpa | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com | female | supporter   |   22 |
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+1 row in set (0.00 sec)
+
+select * from employee where name like '%l%l%';
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+| eid | name    | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  |
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+|  55 | pallavi | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 |
++-----+---------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+1 row in set (0.00 sec)
+
+select * from employee where name like 's%a';
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+| eid | name   | mobile_no | dob        | blood_group | deptno | salary | email            | gender | designation | age  |
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+|  33 | shilpa | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com | female | supporter   |   22 |
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+1 row in set (0.00 sec)
+
+select * from employee where name like 'a%' or name like 's%';
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+| eid | name   | mobile_no | dob        | blood_group | deptno | salary | email            | gender | designation | age  |
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+|  33 | shilpa | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com | female | supporter   |   22 |
+| 111 | anu    |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com    | female | supporter   |   30 |
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+2 rows in set (0.00 sec)
+
+select name,salary from employee where deptno in(10,20,30) and designation like 'd%';
++---------+--------+
+| name    | salary |
++---------+--------+
+| pallavi |  45000 |
++---------+--------+
+1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+functions
+
+1.single row function/scalar function
+2.multi row function/aggregate function[avg(),min(),max(),sum(),count()]
+
+
+select sum(salary) from employee;
++-------------+
+| sum(salary) |
++-------------+
+|     1845000 |
++-------------+
+1 row in set (0.00 sec)
+
+select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+|      700000 |
++-------------+
+1 row in set (0.00 sec)
+
+select min(salary) from employee;
++-------------+
+| min(salary) |
++-------------+
+|       30000 |
++-------------+
+1 row in set (0.00 sec)
+
+select avg(salary) from employee;
++-------------+
+| avg(salary) |
++-------------+
+| 205000.0000 |
++-------------+
+1 row in set (0.00 sec)
+
+select count(*) from employee;
++----------+
+| count(*) |
++----------+
+|        9 |
++----------+
+1 row in set (0.00 sec)
+
+ORDER BY
+
+select * from employee
+    -> order by salary desc;
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+| eid | name     | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 |
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 |
+|  22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+
+9 rows in set (0.05 sec)
+
+
+1) write a query to record all data of employee whose doj is equal to prajna
+
+select * from employee where dob=(select dob from employee where name ="prajna");
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+| eid | name   | mobile_no | dob        | blood_group | deptno | salary | email            | gender | designation | age  |
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+|  66 | prajna |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com | female | analyst     |   35 |
++-----+--------+-----------+------------+-------------+--------+--------+------------------+--------+-------------+------+
+1 row in set (0.00 sec)
+
+
+2) write a query to display the second maximum salary
+
+select max(salary) from employee where salary<(select max(salary) from employee);
++-------------+
+| max(salary) |
++-------------+
+|      100000 |
++-------------+
+1 row in set (0.00 sec)
+
+
+* any and all works same as in operator
+
+
+
+2.MULTI-ROW SUB QUERY
+
+syntax: select * from table_name where col_name operator(select * from table_name);
+
+
+1) write a query to display name of the employee who is working in a location which has atleast one a in the location
+select name from employee where deptno in(select deptno from department where location like '%a%');
++----------+
+| name     |
++----------+
+| shilpa   |
+| tanu     |
+| pallavi  |
+| prajna   |
+| gayu     |
+| dhanush  |
+| chandana |
+| anu      |
++----------+
+
+2) write a query to display all the record of employee who is working in admin,operator,developer
+
+select * from employee where deptno in(select deptno from department where dname in('admin','operator','developer'));
++-----+------+-----------+------------+-------------+--------+--------+----------------+--------+-------------+------+------+
+| eid | name | mobile_no | dob        | blood_group | deptno | salary | email          | gender | designation | age  | doj  |
++-----+------+-----------+------------+-------------+--------+--------+----------------+--------+-------------+------+------+
+|  22 | raj  | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com  | male   | tester      |   20 | NULL |
+|  44 | tanu |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com | female | developer   |   28 | NULL |
+| 111 | anu  |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com  | female | supporter   |   30 | NULL |
++-----+------+-----------+------------+-------------+--------+--------+----------------+--------+-------------+------+------+ 
+
+
+GROUP BY
+--------
+syntax: select count(*) from employee groupby deptno;
+
+* group by excecutes row by row
+
+1) write a query to display the maximum salary for each department
+ select max(salary) from employee group by deptno;
++-------------+
+| max(salary) |
++-------------+
+|       30000 |
+|      700000 |
+|       80000 |
+|      700000 |
++-------------+
+2) wrq to display the highest salary given to hr in each department
+
+select max(salary) from employee where designation="hr" group by deptno;
++-------------+
+| max(salary) |
++-------------+
+|      100000 |
+---------------
+
+HAVING
+------
+
+syntax: select * from table_name where condition group by column_name having condition;
+
+1)wrq to display deptno which has atlest 2 employee working
+
+select deptno from employee group by deptno having count(*)>=2;
++--------+
+| deptno |
++--------+
+|     30 |
+|     50 |
++--------+
+
+JOINS
+
+1)cross join-record from the first table will be merged with all the records of the second table
+
+syntax:select * from table1 cross join table2;
+ select * from employee cross join department;
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+| eid | name     | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  | doj        | deptno | dname       | location  |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+|  22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 | 2018-03-04 |     10 | admin       | bangalore |
+|  22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 | 2018-03-04 |     20 | operator    | pune      |
+|  22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 | 2018-03-04 |     30 | maintenance | mumbai    |
+|  22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 | 2018-03-04 |     40 | development | hyderabad |
+|  22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 | 2018-03-04 |     50 | admin       | chennai   |
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 | 2007-08-09 |     10 | admin       | bangalore |
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 | 2007-08-09 |     20 | operator    | pune      |
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 | 2007-08-09 |     30 | maintenance | mumbai    |
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 | 2007-08-09 |     40 | development | hyderabad |
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 | 2007-08-09 |     50 | admin       | chennai   |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 | 2007-08-09 |     10 | admin       | bangalore |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 | 2007-08-09 |     20 | operator    | pune      |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 | 2007-08-09 |     30 | maintenance | mumbai    |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 | 2007-08-09 |     40 | development | hyderabad |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 | 2007-08-09 |     50 | admin       | chennai   |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 | 2006-02-03 |     10 | admin       | bangalore |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 | 2006-02-03 |     20 | operator    | pune      |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 | 2006-02-03 |     30 | maintenance | mumbai    |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 | 2006-02-03 |     40 | development | hyderabad |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 | 2006-02-03 |     50 | admin       | chennai   |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 | 2010-04-08 |     10 | admin       | bangalore |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 | 2010-04-08 |     20 | operator    | pune      |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 | 2010-04-08 |     30 | maintenance | mumbai    |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 | 2010-04-08 |     40 | development | hyderabad |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 | 2010-04-08 |     50 | admin       | chennai   |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 | 2003-05-06 |     10 | admin       | bangalore |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 | 2003-05-06 |     20 | operator    | pune      |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 | 2003-05-06 |     30 | maintenance | mumbai    |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 | 2003-05-06 |     40 | development | hyderabad |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 | 2003-05-06 |     50 | admin       | chennai   |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 | 2011-02-06 |     10 | admin       | bangalore |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 | 2011-02-06 |     20 | operator    | pune      |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 | 2011-02-06 |     30 | maintenance | mumbai    |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 | 2011-02-06 |     40 | development | hyderabad |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 | 2011-02-06 |     50 | admin       | chennai   |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 | 2012-02-03 |     10 | admin       | bangalore |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 | 2012-02-03 |     20 | operator    | pune      |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 | 2012-02-03 |     30 | maintenance | mumbai    |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 | 2012-02-03 |     40 | development | hyderabad |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 | 2012-02-03 |     50 | admin       | chennai   |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 | 2014-03-02 |     10 | admin       | bangalore |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 | 2014-03-02 |     20 | operator    | pune      |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 | 2014-03-02 |     30 | maintenance | mumbai    |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 | 2014-03-02 |     40 | development | hyderabad |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 | 2014-03-02 |     50 | admin       | chennai   |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+45 rows in set (0.00 sec)
+
+2)inner join
+
+select * from employee e inner join department d on e.deptno=d.deptno;
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+| eid | name     | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  | doj        | deptno | dname       | location  |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+|  22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 | 2018-03-04 |     20 | operator    | pune      |
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 | 2007-08-09 |     30 | maintenance | mumbai    |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 | 2007-08-09 |     50 | admin       | chennai   |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 | 2006-02-03 |     30 | maintenance | mumbai    |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 | 2010-04-08 |     30 | maintenance | mumbai    |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 | 2003-05-06 |     30 | maintenance | mumbai    |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 | 2011-02-06 |     40 | development | hyderabad |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 | 2012-02-03 |     30 | maintenance | mumbai    |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 | 2014-03-02 |     50 | admin       | chennai   |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+9 rows in set (0.00 sec)
+
+3)outer join
+
+1.left outer join-it is the combination of inner join and unmatched records from the left table
+
+select * from table_name1 left outer join table_name2 on condition;
+ select * from employee e left outer join department d on e.deptno=d.deptno;
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+| eid | name     | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  | doj        | deptno | dname       | location  |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+|  22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 | 2018-03-04 |     20 | operator    | pune      |
+|  33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 | 2007-08-09 |     30 | maintenance | mumbai    |
+|  44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 | 2007-08-09 |     50 | admin       | chennai   |
+|  55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 | 2006-02-03 |     30 | maintenance | mumbai    |
+|  66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 | 2010-04-08 |     30 | maintenance | mumbai    |
+|  77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 | 2003-05-06 |     30 | maintenance | mumbai    |
+|  88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 | 2011-02-06 |     40 | development | hyderabad |
+|  99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 | 2012-02-03 |     30 | maintenance | mumbai    |
+| 111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 | 2014-03-02 |     50 | admin       | chennai   |
++-----+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+9 rows in set (0.00 sec)
+
+
+2.right outer join-it is the combination of inner join and unmatched records from the right table
+
+select * from table_name1 righwt outer join table_name2 on condition;
+select * from employee e right outer join department d on e.deptno=d.deptno;
++------+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+| eid  | name     | mobile_no | dob        | blood_group | deptno | salary | email             | gender | designation | age  | doj        | deptno | dname       | location  |
++------+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+|   22 | raj      | 767576564 | 1992-03-05 | a+          |     20 |  30000 | raj@gmail.com     | male   | tester      |   20 | 2018-03-04 |     20 | operator    | pune      |
+|   33 | shilpa   | 876757655 | 1993-06-07 | b+          |     30 |  65000 | shilpa@gmail.com  | female | supporter   |   22 | 2007-08-09 |     30 | maintenance | mumbai    |
+|   44 | tanu     |  65765666 | 1992-03-03 | 0+          |     50 | 700000 | tanu@gmail.com    | female | developer   |   28 | 2007-08-09 |     50 | admin       | chennai   |
+|   55 | pallavi  | 645645735 | 1996-06-08 | o+          |     30 |  45000 | pallavi@gmail.com | female | developer   |   26 | 2006-02-03 |     30 | maintenance | mumbai    |
+|   66 | prajna   |   6453465 | 1993-06-08 | o+          |     30 |  35000 | prajna@gmail.com  | female | analyst     |   35 | 2010-04-08 |     30 | maintenance | mumbai    |
+|   77 | gayu     |   5465465 | 1993-08-06 | b+          |     30 | 700000 | gay@gmail.com     | female | tester      |   37 | 2003-05-06 |     30 | maintenance | mumbai    |
+|   88 | dhanush  |  65757656 | 1997-06-04 | a+          |     40 |  80000 | dhanush@gmail.com | male   | developer   |   33 | 2011-02-06 |     40 | development | hyderabad |
+|   99 | chandana |  65765456 | 1997-06-03 | a+          |     30 | 100000 | chandu@gmail.com  | female | hr          |   29 | 2012-02-03 |     30 | maintenance | mumbai    |
+|  111 | anu      |  77876666 | 1999-06-04 | b-          |     50 |  90000 | anu@gmail.com     | female | supporter   |   30 | 2014-03-02 |     50 | admin       | chennai   |
+| NULL | NULL     |      NULL | NULL       | NULL        |   NULL |   NULL | NULL              | NULL   | NULL        | NULL | NULL       |     10 | admin       | bangalore |
+| NULL | NULL     |      NULL | NULL       | NULL        |   NULL |   NULL | NULL              | NULL   | NULL        | NULL | NULL       |     60 | admin       | pune      |
+| NULL | NULL     |      NULL | NULL       | NULL        |   NULL |   NULL | NULL              | NULL   | NULL        | NULL | NULL       |     70 | development | chennai   |
++------+----------+-----------+------------+-------------+--------+--------+-------------------+--------+-------------+------+------------+--------+-------------+-----------+
+12 rows in set (0.03 sec)
+
+
+4) natural join-natural join is similar to innerjoin but no condition
+
+syntax: select * from table1 natural join table2;
+
+5) self join- joining of two same tables
+
+syntax: select * from table1 t1  join table2 t2 on condition;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
