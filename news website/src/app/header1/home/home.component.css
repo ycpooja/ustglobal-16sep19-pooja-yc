@@ -1,0 +1,23 @@
+#b1{
+    height: 200px;
+    width: 280px;
+}
+#b2{
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
+
+#b5{
+    height:325px;
+    width:620px;
+}
+.card.card-body.mt-6{
+    border:1px ;
+}
+#b7{
+    margin-top: 18px;
+}
+#b9{
+    font-size: 20px;
+}

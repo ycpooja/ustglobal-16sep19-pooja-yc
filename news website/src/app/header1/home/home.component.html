@@ -1,0 +1,26 @@
+<div id="b7">
+<h1 id="b9">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  ENTERTAINMENT NEWS  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; 
+TOP NEWS OF INDIA   &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;  SPORTS NEWS</h1>
+<div class="row">
+<div class="col-md-3">
+<div class="card card-body mt-6" *ngFor="let enew of enews">
+    <img id="b1" src="{{enew.urlToImage}}" alt="">
+    <h1 id="b2" >{{enew.title}}</h1>
+</div>
+</div>
+<div class="col-md-6">
+<div id="b4" class="card card-body mt-6" *ngFor="let new of news">
+    <img id="b5" src="{{new.urlToImage}}" alt="">
+    <h1 id="b2" >{{new.title}}</h1>
+</div>
+</div>
+<div class="col-md-3">
+<div id="b4" class="card card-body mt-6 " *ngFor="let snew of snews">
+    <img id="b1" src="{{snew.urlToImage}}" alt="">
+    <h1 id="b2">{{snew.title}}</h1>
+</div>
+</div>
+
+
