@@ -1,0 +1,43 @@
+<input type="search" name="search" [(ngModel)]='search' placeholder="Enter name of product to search..."
+    class="form-control col-md-4 offset-md-4 mb-3 mt-5">
+<div class="panel-body">
+    <table class="table table-hover table-sm table-bordered">
+
+        <thead class="thead-light">
+            <tr>
+                <th scope="row">PRODUCT_ID</th>
+                <th scope="row">NAME</th>
+                <th scope="row">QUANTITY</th>
+                <th scope="row">COMPANY</th>
+                <th scope="row">PRICE</th>
+                <th scope="row">CATEGORY</th>
+                <th scope="row">ADD PRODUCT</th>
+                <th scope="row">REMOVE PRODUCT</th>
+                <th scope="row">ORDER DETAILS</th>
+                <th scope="row">GENERATE BILL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let products of product">
+                <td>{{products.product_id}}</td>
+                <td>{{products.name}}</td>
+                <td>{{products.Quantity}}</td>
+                <td>{{products.company}}</td>
+                <td>{{products.price}}</td>
+                <td>{{products.category}}</td>
+                <td>
+                    <button type="button" routerLink="/add-product" class="btn btn-primary">Add product</button>
+                </td>
+                <td>
+                    <button (click)="deleteProduct(products)" type="button" class="btn btn-danger">Remove
+                        product</button>
+                </td>
+                <td>
+                    <button routerLink="/order-list" type="button" class="btn btn-success">Orders</button>
+                </td>
+                <td>
+                    <button routerLink="/generate-bill" type="button" class="btn btn-success">Generate bill</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>

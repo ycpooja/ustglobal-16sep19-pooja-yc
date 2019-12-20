@@ -1,0 +1,7 @@
+.image{
+    height:38em;
+    background-size: cover;
+    width: auto;
+    /*background-image: url('');*/
+    background-position: 50% 50%;
+}
